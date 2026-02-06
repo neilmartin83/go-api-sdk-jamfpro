@@ -94,7 +94,7 @@ type MobileDeviceConfigurationProfileSubsetSelfServiceSecurityName struct {
 type MobileDeviceConfigurationProfileSubsetLimitation struct {
 	NetworkSegments []MobileDeviceConfigurationProfileSubsetNetworkSegment `xml:"network_segments>network_segment,omitempty"`
 	Users           []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"users>user,omitempty"`
-	UserGroups      []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"user_groups>user_group,omitempty"`
+	UserGroups      []MobileDeviceConfigurationProfileSubsetScopeUserGroup `xml:"user_groups>user_group,omitempty"`
 	Ibeacons        []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"ibeacons>ibeacon,omitempty"`
 }
 
@@ -102,7 +102,7 @@ type MobileDeviceConfigurationProfileSubsetExclusion struct {
 	MobileDevices      []MobileDeviceConfigurationProfileSubsetMobileDevice   `xml:"mobile_devices>mobile_device,omitempty"`
 	MobileDeviceGroups []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"mobile_device_groups>mobile_device_group,omitempty"`
 	Users              []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"users>user,omitempty"`
-	UserGroups         []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"user_groups>user_group,omitempty"`
+	UserGroups         []MobileDeviceConfigurationProfileSubsetScopeUserGroup `xml:"user_groups>user_group,omitempty"`
 	Buildings          []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"buildings>building,omitempty"`
 	Departments        []MobileDeviceConfigurationProfileSubsetScopeEntity    `xml:"departments>department,omitempty"`
 	NetworkSegments    []MobileDeviceConfigurationProfileSubsetNetworkSegment `xml:"network_segments>network_segment,omitempty"`
@@ -125,6 +125,12 @@ type MobileDeviceConfigurationProfileSubsetMobileDevice struct {
 // Generic Entity struct for common use
 type MobileDeviceConfigurationProfileSubsetScopeEntity struct {
 	ID   int    `xml:"id"`
+	Name string `xml:"name,omitempty"`
+}
+
+// Specific Entity struct for User Groups with string ID
+type MobileDeviceConfigurationProfileSubsetScopeUserGroup struct {
+	ID   string `xml:"id"`
 	Name string `xml:"name,omitempty"`
 }
 

@@ -121,7 +121,7 @@ type MobileDeviceApplicationSubsetScope struct {
 
 type MobileDeviceApplicationSubsetLimitation struct {
 	Users           []MobileDeviceApplicationSubsetScopeEntity    `xml:"users>user,omitempty"`
-	UserGroups      []MobileDeviceApplicationSubsetScopeEntity    `xml:"user_groups>user_group,omitempty"`
+	UserGroups      []MobileDeviceApplicationSubsetScopeUserGroup `xml:"user_groups>user_group,omitempty"`
 	NetworkSegments []MobileDeviceApplicationSubsetNetworkSegment `xml:"network_segments>network_segment,omitempty"`
 }
 
@@ -129,7 +129,7 @@ type MobileDeviceApplicationSubsetExclusion struct {
 	MobileDevices      []MobileDeviceApplicationSubsetMobileDevice   `xml:"mobile_devices>mobile_device,omitempty"`
 	Buildings          []MobileDeviceApplicationSubsetScopeEntity    `xml:"buildings>building,omitempty"`
 	Users              []MobileDeviceApplicationSubsetScopeEntity    `xml:"users>user,omitempty"`
-	UserGroups         []MobileDeviceApplicationSubsetScopeEntity    `xml:"user_groups>user_group,omitempty"`
+	UserGroups         []MobileDeviceApplicationSubsetScopeUserGroup `xml:"user_groups>user_group,omitempty"`
 	Departments        []MobileDeviceApplicationSubsetScopeEntity    `xml:"departments>department,omitempty"`
 	MobileDeviceGroups []MobileDeviceApplicationSubsetScopeEntity    `xml:"mobile_device_groups>mobile_device_group,omitempty"`
 	NetworkSegments    []MobileDeviceApplicationSubsetNetworkSegment `xml:"network_segments>network_segment,omitempty"`
@@ -156,6 +156,12 @@ type MobileDeviceApplicationSubsetMobileDevice struct {
 // Generic Entity struct for common use
 type MobileDeviceApplicationSubsetScopeEntity struct {
 	ID   int    `xml:"id"`
+	Name string `xml:"name,omitempty"`
+}
+
+// Specific Entity struct for User Groups with string ID
+type MobileDeviceApplicationSubsetScopeUserGroup struct {
+	ID   string `xml:"id"`
 	Name string `xml:"name,omitempty"`
 }
 
